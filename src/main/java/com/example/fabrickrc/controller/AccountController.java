@@ -1,6 +1,7 @@
 package com.example.fabrickrc.controller;
 
 import java.util.Arrays;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -63,14 +65,26 @@ public class AccountController {
 		return response.getBody();
 	}
 	
-	@GetMapping("/accounts")
-	public String getTransactionList() {
-		//TODO settare gli header per la richiesta a Fabrick
-		
-		//TODO preparare il RestTemplate per la chiamata
-		return "";
+	@GetMapping("/accounts/{accountId}/transactions")
+	public String getTransactionList(@PathVariable("accountId") Long accountId, 
+			@RequestParam(required = true, name = "fromAccountingDate") String fromAccountingDate,
+			@RequestParam(required = true, name = "toAccountingDate") String toAccountingDate) {
+		HttpHeaders headers = new HttpHeaders();
+		headers.set("Auth-Schema", "S2S");
+		headers.set("apikey", "FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP");
+		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+		String queryParams = "fromAccountingDate=" + fromAccountingDate + "&toAccountingDate=" + toAccountingDate;
+		HttpEntity<String> entity = new HttpEntity<String>(headers);
+		ResponseEntity<String> response = this.restTemplate.exchange(
+				this.accountsFabrickUrl() + String.valueOf(accountId) + "/transactions?" + queryParams, 
+				HttpMethod.GET, 
+				entity, 
+				String.class, 
+				headers
+			);
+		return response.getBody();
 	}
-	
+
 	private String accountsFabrickUrl() {
 		StringBuilder url = new StringBuilder();
 		url.append("https://sandbox.platfr.io");
