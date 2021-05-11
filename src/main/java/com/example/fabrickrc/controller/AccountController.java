@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import com.example.fabrickrc.bean.AccountOutput;
 
 @RestController
-@RequestMapping("/fabricktest/rest/v1")
+@RequestMapping("/fabricktest/rest/api/v1")
 public class AccountController {
 
 	RestTemplate restTemplate = new RestTemplate();
