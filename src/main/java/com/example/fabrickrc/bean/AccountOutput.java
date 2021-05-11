@@ -3,7 +3,7 @@ package com.example.fabrickrc.bean;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Account {
+public class AccountOutput {
 
 	private Long accountId;
 	private String iban;
@@ -100,7 +100,7 @@ public class Account {
 	
 	@Override
 	public String toString() {
-		return "Account {accountId=\'" + this.accountId + "\' "
+		return "AccountOutput {accountId=\'" + this.accountId + "\' "
 				+ "iban=\'" + this.iban + "\' "
 				+ "abiCode=\'" + this.abiCode + "\' "
 				+ "cabCode=\'" + this.cabCode + "\' "
