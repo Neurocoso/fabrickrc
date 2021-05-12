@@ -1,7 +1,6 @@
 package com.example.fabrickrc.controller;
 
 import java.util.Arrays;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -18,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.example.fabrickrc.bean.AccountOutput;
 import com.example.fabrickrc.bean.MoneyTransferInput;
 
 @RestController
