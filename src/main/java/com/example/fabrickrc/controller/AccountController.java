@@ -26,11 +26,13 @@ public class AccountController {
 	@Autowired
 	RestTemplate restTemplate;
 	
+	private final String API_KEY = "FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP";
+	
 	@GetMapping("/accounts/{accountId}")
 	public String getAccountBalance(@PathVariable("accountId") Long accountId){
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Auth-Schema", "S2S");
-		headers.set("apikey", "FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP");
+		headers.set("apikey", this.API_KEY);
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
 		ResponseEntity<String> response = this.restTemplate.exchange(
@@ -49,7 +51,7 @@ public class AccountController {
 			@RequestBody MoneyTransferInput moneyTransfer) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Auth-Schema", "S2S");
-		headers.set("apikey", "FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP");
+		headers.set("apikey", this.API_KEY);
 		headers.set("X-Time-Zone", "Europe/Rome");
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		HttpEntity<MoneyTransferInput> entity = new HttpEntity<MoneyTransferInput>(moneyTransfer, headers);
@@ -69,7 +71,7 @@ public class AccountController {
 			@RequestParam(required = true, name = "toAccountingDate") String toAccountingDate) {
 		HttpHeaders headers = new HttpHeaders();
 		headers.set("Auth-Schema", "S2S");
-		headers.set("apikey", "FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP");
+		headers.set("apikey", this.API_KEY);
 		headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
 		String queryParams = "fromAccountingDate=" + fromAccountingDate + "&toAccountingDate=" + toAccountingDate;
 		HttpEntity<String> entity = new HttpEntity<String>(headers);
