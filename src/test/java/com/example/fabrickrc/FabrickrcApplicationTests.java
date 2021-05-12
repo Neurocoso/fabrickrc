@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class FabrickrcApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void whenAccountApiCalled_givenAccountId_thenGetAccount() {
+		
 	}
 
 }

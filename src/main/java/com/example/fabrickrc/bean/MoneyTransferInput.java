@@ -9,7 +9,7 @@ public class MoneyTransferInput {
 	private String executionDate;
 	private String uri;
 	private String description;
-	private int amount;
+	private Long amount;
 	private String currency;
 	private boolean isUrgent;
 	private boolean isInstant;
@@ -41,10 +41,10 @@ public class MoneyTransferInput {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public int getAmount() {
+	public Long getAmount() {
 		return amount;
 	}
-	public void setAmount(int amount) {
+	public void setAmount(Long amount) {
 		this.amount = amount;
 	}
 	public String getCurrency() {
