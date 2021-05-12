@@ -36,7 +36,6 @@ public class AccountService {
 				String.class, 
 				headers
 			);
-		System.out.println(String.format("Response Status: %s", response.getStatusCode().toString()));
 		return response.getBody();
 	}
 	
