@@ -13,7 +13,7 @@ import com.example.fabrickrc.bean.MoneyTransferInput;
 import com.example.fabrickrc.service.AccountService;
 
 @RestController
-@RequestMapping("/fabricktest/rest/api/v1")
+@RequestMapping("/fabricktest/api")
 public class AccountController {
 	
 	@Autowired
